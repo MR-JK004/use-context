@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Row, Col, Button,  Carousel } from 'react-bootstrap';
+import { ProductContext } from '../context/ProductContext';
 
-const ProductCard = ({ product, onQuantityChange ,onRemove}) => {
+const ProductCard = ({ product }) => {
+  const { handleQuantityChange, handleRemove } = useContext(ProductContext);
   const [quantity, setQuantity] = useState(1);
-
-  const handleDelete = () => {
-      onRemove(product.id);
-  };
 
   const handleIncrease = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
-    onQuantityChange(product.id, newQuantity);
+    handleQuantityChange(product.id, newQuantity);
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
       const newQuantity = quantity - 1;
       setQuantity(newQuantity);
-      onQuantityChange(product.id, newQuantity);
+      handleQuantityChange(product.id, newQuantity);
     }
   };
 
@@ -55,13 +53,14 @@ const ProductCard = ({ product, onQuantityChange ,onRemove}) => {
               <span className="quantity-display">{quantity}</span>
               <Button variant="outline-secondary" onClick={handleIncrease}>+</Button>
             </div>
-            <h4>${product.price.toFixed(2)}</h4>
-            <p onClick={()=>handleDelete(product.id)} className="remove-button">REMOVE</p>
+            <h4>${(product.price).toFixed(2)}</h4>
+            <Button variant="link" className="remove-button" onClick={() => handleRemove(product.id)}>REMOVE</Button>
           </div>
         </Col>
       </Row>
     </div>
   );
 };
+
 
 export default ProductCard;
