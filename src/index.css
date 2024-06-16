@@ -41,14 +41,23 @@
   cursor: pointer;
 }
 
+.heading{
+  margin-left: -200px;
+}
+
 .product-summary {
   border-top: 1px solid #ddd;
   margin-top: 20px;
   background-color: #F6F5F8 ;
+  position: absolute;
+  margin-top:-1090px;
+  margin-left: 950px;
+  padding: 50px 10px 50px 10px;
 }
 
 .total h5 {
   font-weight: bold;
+  margin-left: -200px;
 }
 
 .daily-cash {
@@ -56,4 +65,7 @@
   font-weight: bold;
   margin-left: 820px;
   margin-top: 5px;
+  margin-left: 15px;
 }
+
+
